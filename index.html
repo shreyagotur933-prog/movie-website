@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book movie tickets and order delicious Indian food with CineBook.">
+    <title>CineBook - Movie Ticket Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="#" class="logo">
+            <i class="fa-solid fa-film"></i> Cine<span>Book</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#movies">Movies</a>
+            <a href="#food">Food & Snacks</a>
+            <a href="#booking">Book Tickets</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="cart-button" onclick="scrollToFood()" aria-label="Go to food menu">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cartCount">0</span>
+            </button>
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-tag">YOUR CINEMA EXPERIENCE STARTS HERE</span>
+            <h1>Big Screen.<br>Big Dreams.<br><span>Best Moments.</span></h1>
+            <p>Book your favourite movie tickets and enjoy delicious Indian food with your movie experience.</p>
+
+            <div class="hero-buttons">
+                <a href="#movies" class="btn primary-btn">Explore Movies <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#food" class="btn outline-btn">Order Food</a>
+            </div>
+
+            <div class="hero-stats">
+                <div>
+                    <h3>50+</h3>
+                    <p>Movies</p>
+                </div>
+                <div>
+                    <h3>100+</h3>
+                    <p>Showtimes</p>
+                </div>
+                <div>
+                    <h3>4.8★</h3>
+                    <p>Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movies Section -->
+    <section class="section" id="movies">
+        <div class="section-heading">
+            <div>
+                <span class="section-label">NOW SHOWING</span>
+                <h2>Trending Movies</h2>
+                <p>Discover the latest movies and book your favourite seats.</p>
+            </div>
+        </div>
+
+        <div class="movie-controls">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="movieSearch" placeholder="Search movies...">
+            </div>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="All">All</button>
+                <button class="filter-btn" data-category="Action">Action</button>
+                <button class="filter-btn" data-category="Drama">Drama</button>
+                <button class="filter-btn" data-category="Comedy">Comedy</button>
+                <button class="filter-btn" data-category="Thriller">Thriller</button>
+            </div>
+        </div>
+
+        <div class="movie-grid" id="movieGrid">
+            <!-- Movie cards generated using JavaScript -->
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section booking-section" id="booking">
+        <div class="section-heading">
+            <div>
+                <span class="section-label">RESERVE YOUR SEAT</span>
+                <h2>Book Your Tickets</h2>
+                <p>Select a movie, date, showtime and your favourite seats.</p>
+            </div>
+        </div>
+
+        <div class="booking-container">
+            <div class="booking-form">
+                <h3><i class="fa-solid fa-ticket"></i> Booking Details</h3>
+
+                <label for="bookingMovie">Select Movie</label>
+                <select id="bookingMovie">
+                    <option value="">Choose a movie</option>
+                </select>
+
+                <label for="bookingDate">Select Date</label>
+                <input type="date" id="bookingDate">
+
+                <label>Select Showtime</label>
+                <div class="showtimes">
+                    <button class="time-btn active" data-time="10:00 AM">10:00 AM</button>
+                    <button class="time-btn" data-time="1:30 PM">1:30 PM</button>
+                    <button class="time-btn" data-time="5:00 PM">5:00 PM</button>
+                    <button class="time-btn" data-time="9:00 PM">9:00 PM</button>
+                </div>
+
+                <h3 class="seat-heading">Select Your Seats</h3>
+
+                <div class="seat-legend">
+                    <span><i class="seat available"></i> Available</span>
+                    <span><i class="seat selected"></i> Selected</span>
+                    <span><i class="seat occupied"></i> Occupied</span>
+                </div>
+
+                <div class="screen">
+                    <i class="fa-solid fa-tv"></i>
+                    SCREEN THIS WAY
+                </div>
+
+                <div class="seat-layout" id="seatLayout">
+                    <!-- Seats generated using JavaScript -->
+                </div>
+            </div>
+
+            <div class="booking-summary">
+                <h3>Booking Summary</h3>
+                <div class="summary-row">
+                    <span>Movie</span>
+                    <strong id="summaryMovie">Not selected</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Date</span>
+                    <strong id="summaryDate">Not selected</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Showtime</span>
+                    <strong id="summaryTime">10:00 AM</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Seats</span>
+                    <strong id="summarySeats">0</strong>
+                </div>
+                <div class="summary-row">
+                    <span>Ticket Price</span>
+                    <strong id="ticketPrice">₹0</strong>
+                </div>
+                <div class="summary-row total-row">
+                    <span>Total Amount</span>
+                    <strong id="bookingTotal">₹0</strong>
+                </div>
+                <button class="btn primary-btn confirm-btn" id="confirmBooking">
+                    Confirm Booking <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <p class="summary-note">* Demo booking only. No actual payment is collected.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Indian Food Section -->
+    <section class="section food-section" id="food">
+        <div class="section-heading">
+            <div>
+                <span class="section-label">TASTY CINEMA TREATS</span>
+                <h2>Indian Food & Snacks</h2>
+                <p>Make your movie experience delicious with our favourite Indian dishes!</p>
+            </div>
+        </div>
+
+        <div class="food-category">
+            <button class="food-filter active" data-category="All">All Food</button>
+            <button class="food-filter" data-category="North Indian">North Indian</button>
+            <button class="food-filter" data-category="South Indian">South Indian</button>
+            <button class="food-filter" data-category="Chaat">Chaat & Snacks</button>
+            <button class="food-filter" data-category="Drinks">Drinks</button>
+        </div>
+
+        <div class="food-grid" id="foodGrid">
+            <!-- Food cards generated using JavaScript -->
+        </div>
+
+        <div class="food-cart">
+            <div>
+                <h3><i class="fa-solid fa-basket-shopping"></i> Your Food Order</h3>
+                <p id="foodCartText">No food items added yet.</p>
+            </div>
+            <div class="food-cart-total">
+                <span>Food Total</span>
+                <strong id="foodTotal">₹0</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section features-section">
+        <div class="section-heading centered">
+            <span class="section-label">WHY CINEBOOK?</span>
+            <h2>Enjoy Movies Like Never Before</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fa-solid fa-ticket"></i>
+                <h3>Easy Booking</h3>
+                <p>Book your favourite movie tickets in just a few clicks.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-couch"></i>
+                <h3>Choose Your Seats</h3>
+                <p>Select your preferred seats before watching the movie.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-utensils"></i>
+                <h3>Delicious Food</h3>
+                <p>Enjoy tasty Indian meals, chaat and snacks during your movie.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Easy to Use</h3>
+                <p>Enjoy a smooth booking experience on every device.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-about">
+                <a href="#" class="logo"><i class="fa-solid fa-film"></i> Cine<span>Book</span></a>
+                <p>Your one-stop destination for movie tickets and delicious Indian food. Enjoy every moment with us!</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <a href="#home">Home</a>
+                <a href="#movies">Movies</a>
+                <a href="#food">Food & Snacks</a>
+                <a href="#booking">Book Tickets</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Contact Us</h3>
+                <p><i class="fa-solid fa-envelope"></i> support@cinebook.com</p>
+                <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
+                <p><i class="fa-solid fa-location-dot"></i> Mumbai, India</p>
+            </div>
+
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 CineBook. All Rights Reserved. | Designed for Learning</p>
+        </div>
+    </footer>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal" id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal" aria-label="Close">&times;</button>
+            <i class="fa-solid fa-circle-check success-icon"></i>
+            <h2 id="modalTitle">Booking Confirmed!</h2>
+            <p>Your demo movie booking has been completed successfully.</p>
+            <div id="confirmationDetails"></div>
+            <button class="btn primary-btn" id="doneButton">Done</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
